@@ -1,0 +1,18 @@
+﻿using System;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+
+namespace StudentWebApi.Models
+{
+    public class Student
+    {
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; set; }
+        public string LastName { get; set; }
+        public string FirstName { get; set; }
+        public string Email { get; set; }
+        [BsonDateTimeOptions]
+        public DateTime LastUpdated { get; set; } = DateTime.Now;
+    }
+}

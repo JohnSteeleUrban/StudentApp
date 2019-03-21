@@ -1,0 +1,45 @@
+<mat-card-content>
+  <form [formGroup]="editStudentForm"
+        (ngSubmit)="onSubmit(editStudentForm.value)"
+        [class.error]="!editStudentForm.valid && editStudentForm.touched">
+
+    <ul class="items">
+
+      <li>
+        <label class="label-pad">First Name: </label>
+        <mat-form-field class="inputBackground">
+          <input matInput #firstName maxlength="30" class="inputField" type="text" id="firstName"
+                 formControlName="firstName">
+        </mat-form-field>
+      </li>
+
+
+      <li><label class="label-pad">Last Name: </label>
+        <mat-form-field class="inputBackground">
+          <input matInput #lastName maxlength="30" class="inputField" type="text" id="lastName"
+                 formControlName="lastName">
+        </mat-form-field>
+      </li>
+
+      <li><label class="label-pad">Email: </label>
+        <mat-form-field class="inputBackground">
+          <input matInput #email maxlength="30" 
+                 class="inputField" type="text" id="email"
+                 formControlName="email">
+        </mat-form-field>
+      </li>
+      <!-- <li style="display:none;">
+        <label class="label-pad">LastUpdated: </label>
+        <mat-form-field class="inputBackground">
+          <input matInput #firstName maxlength="30" class="inputField" type="date" id="lastUpdated"
+                 formControlName="lastUpdated">
+        </mat-form-field>
+      </li> -->
+    </ul>
+
+
+  </form>
+
+</mat-card-content>
+
+

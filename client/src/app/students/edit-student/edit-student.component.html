@@ -1,0 +1,27 @@
+<section flex-container fxLayout="column" fxLayoutAlign="space-around center">
+
+  <div mat-dialog-title>
+      <h2>Edit Student</h2>
+  </div>
+
+  <div mat-dialog-content>
+
+      <app-edit-form></app-edit-form>
+
+
+      <div fxLayout="row" fxLayoutAlign="space-around center">
+
+        <button [disabled]="!editForm.editStudentForm.valid"
+                mat-raised-button (click)="update(editForm.editStudentForm.value)">
+                  Save Edits</button>
+        <button mat-raised-button (click)="dialogRef.close(true)">Cancel Edit</button>
+
+      </div>
+
+      <div mat-dialog-actions fxLayoutAlign="space-around center">
+
+      </div>
+
+  </div>
+
+</section>
