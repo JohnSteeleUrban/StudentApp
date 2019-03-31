@@ -8,37 +8,37 @@ namespace StudentWebApi.Helpers
 {
     public class StudentHelper
     {
-        public static IEnumerable<Student> ApplyPaging(List<Student> students, int page, int pageSize)
+        
+        public static string FortmatSortBy(string sortBy)
         {
-            return students.Skip(page * pageSize).Take(pageSize);
-        }
-
-        public static IEnumerable<Student> ApplySort(IEnumerable<Student> students, string sort)
-        {
-
-            sort = sort == null ? "" : sort.ToLower();
-
-            switch (sort)
+            sortBy = sortBy == null ? "" : sortBy.ToLower();
+            switch (sortBy)
             {
                 case "firstname":
-                    return students.OrderBy(x => x.FirstName);
-                case "firstname desc":
-                    return students.OrderByDescending(x => x.FirstName);
+                    return "FirstName";
                 case "lastname":
-                    return students.OrderBy(x => x.LastName);
-                case "lastname desc":
-                    return students.OrderByDescending(x => x.LastName);
+                    return "LastName";
                 case "email":
-                    return students.OrderBy(x => x.Email);
-                case "email desc":
-                    return students.OrderByDescending(x => x.Email);
+                    return "Email";
                 case "lastupdated":
-                    return students.OrderBy(x => x.LastUpdated);
-                case "lastupdated desc":
-                    return students.OrderByDescending(x => x.LastUpdated);
+                    return "LastUpdated";
                 default:
                     goto case "firstname";
             }
+        }
+
+        public static int GetSortOrder(SortOrder order)
+        {
+            switch (order)
+            {
+                case SortOrder.Asc:
+                    return 1;
+                case SortOrder.Desc:
+                    return -1;
+                default:
+                    goto case SortOrder.Asc;
+            }
+
         }
     }
 }

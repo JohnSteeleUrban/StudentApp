@@ -8,7 +8,7 @@ namespace StudentWebApi.Repository
 {
     public interface IStudentRepository
     {
-        Task<StudentApiResponse> GetAllStudents(string sortBy, int page, int pageSize);
+        Task<StudentApiResponse> GetAllStudents(string sortBy,  SortOrder order, int page, int pageSize);
         Task<Student> GetStudent(string id);
         Task Create(Student student);
         Task<bool> Update(Student student);

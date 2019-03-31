@@ -5,10 +5,9 @@ using System.Threading.Tasks;
 
 namespace StudentWebApi.Models
 {
-    public class StudentApiResponse
+    public enum SortOrder
     {
-        public IEnumerable<Student> Items { get; set; }
-        public long TotalCount { get; set; }
-
+        Asc = 0,
+        Desc = 1,
     }
 }

@@ -19,10 +19,14 @@ namespace StudentWebApi.Repository
             _context = context;
         }
 
-        public async Task<StudentApiResponse> GetAllStudents(string sort, int page, int pageSize)
+        public async Task<StudentApiResponse> GetAllStudents(string sortBy, SortOrder order, int page, int pageSize)
         {
-            var students = await _context.Students.Find(_ => true).ToListAsync();
-            return new StudentApiResponse { Items = StudentHelper.ApplySort(StudentHelper.ApplyPaging(students, page, pageSize), sort).ToList(), TotalCount = students.Count() };
+            var students = await _context.Students.Find(FilterDefinition<Student>.Empty)
+                                .Sort(string.Format( "{{{0}: {1}}}", StudentHelper.FortmatSortBy(sortBy), StudentHelper.GetSortOrder(order)))
+                                .Skip((page - 1) * pageSize)
+                                .Limit(pageSize)
+                                .ToListAsync(); 
+            return new StudentApiResponse { Items = students, TotalCount = await GetStudentCount() };
         }
 
         public Task<Student> GetStudent(string id)

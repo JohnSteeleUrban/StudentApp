@@ -24,9 +24,9 @@ namespace StudentWebApi.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get(string sort, int page, int pageSize)
+        public async Task<IActionResult> Get(string sortBy, int order, int page, int pageSize)
         {
-            var students = await _studentRepository.GetAllStudents(sort, page, pageSize);
+            var students = await _studentRepository.GetAllStudents(sortBy, (SortOrder)order, page, pageSize);
 
             var paginationMetadata = new
             {
