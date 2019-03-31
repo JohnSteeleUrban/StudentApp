@@ -52,9 +52,10 @@ export class StudentListComponent implements AfterViewInit {
     ).subscribe(data => this.dataSource = data);
  }
 
-  public getAllStudents  (sort: string, order: string, page: number, pageSize: number): Observable<any>  {
-    if(order === "desc"){ sort + " " + order;}
-    return this.repositoryService.getData(`api/students?&sort=${sort}&page=${page + 1}&pageSize=${pageSize}`);
+  public getAllStudents  (sort: string, sortOrder: string, page: number, pageSize: number): Observable<any>  {
+    let order = 0; 
+    if(sortOrder === "desc"){ order = 1;}
+    return this.repositoryService.getData(`api/students?&sortBy=${sort}&order=${order}&page=${page + 1}&pageSize=${pageSize}`);
   }  
 
   public edit(recordId) {
