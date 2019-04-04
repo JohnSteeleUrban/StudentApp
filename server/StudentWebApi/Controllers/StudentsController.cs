@@ -34,7 +34,7 @@ namespace StudentWebApi.Controllers
                 pageSize = pageSize,
                 currentPage = page
             };
-            Response.Headers.Add("Pagination", JsonConvert.SerializeObject(paginationMetadata));
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(paginationMetadata));
             return new ObjectResult(students);
         }
         
